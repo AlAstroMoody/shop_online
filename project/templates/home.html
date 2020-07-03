@@ -1,0 +1,147 @@
+{% extends './base.html' %}
+{% load static %}
+
+{% block title %}
+    Лучший интернет магазин по версии...
+{% endblock %}
+
+
+{% block content %}
+
+    <div id="index-banner" class="parallax-container">
+        <div class="section no-pad-bot">
+            <div class="container">
+                <br><br>
+                <h1 class="header center teal-text text-lighten-2 shadow-black z-depth-5">Лучший на свете интернет
+                    магазин!</h1>
+                <div class="row center">
+                    <h3 class="header col s12 shadow-black text-grey lighten-3">Оригинальные детали только у нас</h3>
+                </div>
+                <div class="row center">
+                    <a href="#" id="download-button"
+                       class="btn-large waves-effect waves-light lighten-1 deep-purple">Перейти к запчастям</a>
+                </div>
+                <br><br>
+            </div>
+        </div>
+        <div class="parallax"><img src="{% static 'img/bg1.jpg' %}" alt="bd img 1"></div>
+    </div>
+
+    <div class="main">
+        <div class="container">
+            <div class="section">
+
+                <!--   Icon Section   -->
+                <div class="row">
+                    <div class="col s12 m4 orange">
+                        <div class="icon-block">
+                            <h2 class="center brown-text"><i class="material-icons">flash_on</i></h2>
+                            <h5 class="center">Быстрое оформление заказа</h5>
+
+                            <p class="light">Найти нужную деталь и оформить заказ очень просто!</p>
+                        </div>
+                    </div>
+
+                    <div class="col s12 m4 green">
+                        <div class="icon-block">
+                            <h2 class="center brown-text"><i class="material-icons">group</i></h2>
+                            <h5 class="center">Всегда на связи с клиентами.</h5>
+
+                            <p class="light">Обратная связь с клиентами на всём протяжении работы с заказом</p>
+                        </div>
+                    </div>
+
+                    <div class="col s12 m4 blue">
+                        <div class="icon-block">
+                            <h2 class="center brown-text"><i class="material-icons">settings</i></h2>
+                            <h5 class="center">Работаем для Вас</h5>
+
+                            <p class="light">Только оригинальные детали от производителя. Качесто, гарантия,
+                                надёжность.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="parallax-container valign-wrapper">
+        <div class="section no-pad-bot">
+            <div class="container">
+                <div class="row center">
+                    <h3 class="header col s12 light shadow-black text-grey lighten-3"> Найдем запчасти для Вашего
+                        прибора</h3>
+                </div>
+            </div>
+        </div>
+        <div class="parallax"><img src="{% static 'img/bg2.jpg' %}" alt="bd img 2"></div>
+    </div>
+
+    <div class="main">
+        <div class="container">
+            <div class="section">
+                <div class="row">
+                    <h2 class="text-accent-3 center-align">Новинки интернет-магазина</h2>
+                    {% for product_image in product_images %}
+                        <div class="col s12 m4 for_cards center-align">
+                            <div class="card large grey darken-1 size-image">
+                                <div class="card-image waves-effect waves-block waves-light image">
+                                    <img src='{{ product_image.image.url }}' alt="card image">
+                                </div>
+                                <br>
+                                <div class="card-content">
+                            <span class="card-title activator grey-text text-darken-4">{{ product_image.product.name }}<i
+                                    class="material-icons right">more_vert</i></span>
+                                    <hr>
+                                    <b>{{ product_image.product.price }} ₽</b>
+                                    <p>
+                                        <button class="btn blue-grey lighten-2 waves-effect waves-light btn-in-card">
+                                            <a href="#" class="black-text">Добавить <i class="large material-icons">add_shopping_cart</i></a>
+                                        </button>
+                                    </p>
+                                </div>
+                                <div class="card-reveal">
+                        <span class="card-title grey-text text-darken-4">{{ product_image.product.name }}<i
+                                class="material-icons right">close</i></span>
+                                    <p>{{ product_image.product.name }}</p>
+                                    <p>{{ product_image.product.brand }}</p>
+                                    <p>{{ product_image.product.description|truncatechars_html:80 }}</p>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="main">
+        <div class="container">
+            <div class="section">
+                <div class="row">
+                    <div class="col s12 center">
+                        <h3><i class="mdi-content-send brown-text"></i></h3>
+                        <h3>Свяжитесь с нами</h3>
+                        <h5 class="left-align light">
+                            Всегда поможем правильно подобрать запасные детали именно для вашего прибора.
+                            Мы работаем непосредственно с производителями бытовой техники, что гарантирует отстутствие
+                            ошибок.
+                            Наши специалисты имеют огромный опыт и с радостью помогут Вам!</h5>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="parallax-container valign-wrapper">
+        <div class="section no-pad-bot">
+            <div class="container">
+                <div class="row center">
+                    <h3 class="header col s12 light shadow-black text-grey lighten-3">Купите уже чего-нибудь, а то не получу зачёт xD</h3>
+                </div>
+            </div>
+        </div>
+        <div class="parallax"><img src="{% static 'img/bg3.jpg' %}" alt="bd img 3"></div>
+    </div>
+
+{% endblock %}

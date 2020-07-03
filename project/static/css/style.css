@@ -1,0 +1,85 @@
+nav ul a,
+nav .brand-logo {
+    color: #ffffff;
+}
+
+p {
+    line-height: 2rem;
+}
+
+.sidenav-trigger {
+    color: #26a69a;
+}
+
+.parallax-container {
+    min-height: 380px;
+    line-height: 0;
+    height: auto;
+    color: rgba(255, 255, 255, .9);
+}
+
+.parallax-container .section {
+    width: 100%;
+}
+
+@media only screen and (max-width: 992px) {
+    .parallax-container .section {
+        position: absolute;
+        top: 40%;
+    }
+
+    #index-banner .section {
+        top: 10%;
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    #index-banner .section {
+        top: 0;
+    }
+}
+
+.icon-block {
+    padding: 0 15px;
+}
+
+.icon-block .material-icons {
+    font-size: inherit;
+}
+
+footer.page-footer {
+    margin: 0;
+}
+
+.shadow-black {
+    text-shadow: 2px 2px 2px black, 0 0 1em rgb(255, 255, 255);
+}
+
+.image img {
+    -moz-transition: all 1s ease-out;
+    -o-transition: all 1s ease-out;
+    -webkit-transition: all 1s ease-out;
+}
+
+.image img:hover {
+    -webkit-transform: scale(1.1);
+    -moz-transform: scale(1.1);
+    -o-transform: scale(1.1);
+}
+
+.main {
+    background: linear-gradient(129.56deg, #ffffff -7.06%, #c4bfbf 50.9%, #6f6f6f 107.91%);
+}
+
+.btn-in-card{
+    margin-top: 10px;
+}
+.btn-in-card:hover{
+    opacity: 70%;
+}
+
+
+.card.large .card-image + .card-content {
+  max-height: 40%;
+  padding: 10px;
+}
