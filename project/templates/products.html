@@ -1,0 +1,49 @@
+{% extends './base.html' %}
+{% load static %}
+
+{% block title %}
+    {{ product.name }}
+{% endblock %}
+
+{% block content %}
+    <div class="main">
+        <div class="container">
+            <div class="section">
+                <h2 class="text-accent-3 center-align">Все товары</h2>
+                <div class="row">
+
+                    {% for product in products %}
+                        <div class="col s10 offset-s2 m3 for_cards center-align">
+                            <div class="card product-card">
+                                <div class="card-image product-image image">
+                                    {% for image_item in product.productimage_set.all %}
+                                        <img src="{{ image_item.image.url }}" alt="img detail">
+                                    {% endfor %}
+                                </div>
+                                <div class="card-content activator">
+                                    <p>{{ product.name| truncatechars:25 }} <i
+                                            class="material-icons right">more_vert</i></p>
+                                </div>
+                                <div class="card-action">
+                                    {{ product.price }} ₽
+                                </div>
+                                <div class="card-reveal">
+                        <span class="card-title grey-text text-darken-4">{{ product_image.product.name }}<i
+                                class="material-icons right">close</i></span>
+                                    <p>{{ product.name }}</p>
+                                    <p>{{ product.brand }}</p>
+                                    <p>{{ product.description|truncatechars_html:80 }}</p>
+                                    <div>
+                                        <a href="{% url 'product:product_details_url' id=product.id %}">Подробнее</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
+

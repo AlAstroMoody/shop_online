@@ -1,14 +1,14 @@
 <nav class="grey darken-3" role="navigation">
     <div class="nav-wrapper container">
-        <a id="logo-container" href="#" class="brand-logo">
+        <a id="logo-container" href="/" class="brand-logo">
             <i class="material-icons">build</i>
-            <b>Тут будет логотип</b>
         </a>
         <ul class="right hide-on-med-and-down">
-            <li><a href="#"><b >Все детали</b></a></li>
+            <li><a href="{% url 'product:product' %}"><b >Все детали</b></a></li>
             <li><a href="#"><b >Рандомная херня</b></a></li>
             <li>
-            <a class="dropdown-trigger" href="#!" data-target="dropdown1">  <b >Профиль клиента</b><i class="material-icons right">arrow_drop_down</i></a>
+            <a class="dropdown-trigger" href="#!" data-target="dropdown1">  <b >Профиль клиента</b>
+                <i class="material-icons right">arrow_drop_down</i></a>
                 <!-- Dropdown Trigger -->
             </li>
         </ul>
@@ -19,7 +19,10 @@
             <li><a href="#!">Выход</a></li>
         </ul>
         <ul id="nav-mobile" class="sidenav">
-            <li><a href="#">Navbar Link</a></li>
+            <li><a href="#">Личный кабинет</a></li>
+            <li><a href="#!">Корзина</a></li>
+            <li class="divider"></li>
+            <li><a href="#!">Выход</a></li>
         </ul>
         <a href="#" data-target="nav-mobile" class="sidenav-trigger"><i class="material-icons">menu</i></a>
     </div>

@@ -1,0 +1,74 @@
+{% extends './base.html' %}
+{% load static %}
+
+{% block title %}
+    {{ product.name }}
+{% endblock %}
+
+{% block content %}
+    <div class="main">
+        <div class="row">
+            <div class="col s12 center-align"><h1>{{ product.name }}</h1>
+                <hr>
+            </div>
+            <div class="col s4 offset-s1">
+                <div class="card blue-grey darken-1">
+                    <div class="card-content white-text padding-bottom">
+                        <span class="card-title">{{ product.brand }}
+                        </span>
+                        <p>ID: {{ product.uid }}</p>
+                        <hr>
+                        <div class="row">
+                            <div class="col s12">
+                                <div class="col s4">
+                                    <span class="card-title">{{ product.price }}₽</span></div>
+                                <div class="col s4 offset-s4">
+                                    <button class="btn waves-effect waves-light btn-in-card">
+                                        <a href="#" class="black-text">Добавить <i
+                                                class="large material-icons">add_shopping_cart</i></a>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col s12">
+                            <ul class="tabs">
+                                <li class="tab col s4"><a href="#detail">О товаре</a></li>
+                                <li class="tab col s4"><a class="active" href="#delivery">Доставка</a></li>
+                                <li class="tab col s4"><a href="#analog">Аналоги</a></li>
+                            </ul>
+                        </div>
+                        <div class="product-description">
+                            <div id="detail" class="col s12"><p>{{ product.description }}</p></div>
+                            <div id="delivery" class="col s12"><p>Информация о доставке</p></div>
+                            <div id="analog" class="col s12"><p>Нет их )</p></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col s6 m5">
+                {% if product.discount %}
+                    <div class="col s3 offset-s3 discount-on-details center-align">Действует
+                        скидка {{ product.discount }}%
+                    </div>
+                {% endif %}
+
+                <div class="card">
+                    <div class="card-image">
+                        {% for image_item in product.productimage_set.all %}
+                            <img src="{{ image_item.image.url }}" alt="img detail">
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <hr>
+        <h3 class="center-align">Специальные предложения</h3>
+        {% include 'sale.html' %}
+    </div>
+
+{% endblock %}
+

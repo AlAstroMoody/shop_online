@@ -15,13 +15,12 @@
                 <h1 class="header center teal-text text-lighten-2 shadow-black z-depth-5">Лучший на свете интернет
                     магазин!</h1>
                 <div class="row center">
-                    <h3 class="header col s12 shadow-black text-grey lighten-3">Оригинальные детали только у нас</h3>
+                    <h3 class="header col s12 l12 shadow-black text-grey lighten-3">Оригинальные детали только у
+                        нас</h3>
                 </div>
-                <div class="row center">
-                    <a href="#" id="download-button"
-                       class="btn-large waves-effect waves-light lighten-1 deep-purple">Перейти к запчастям</a>
+                <div class="center col l4">
+                    <a href="{% url 'product:product' %}" class="btn-large main-button">Перейти к запчастям</a>
                 </div>
-                <br><br>
             </div>
         </div>
         <div class="parallax"><img src="{% static 'img/bg1.jpg' %}" alt="bd img 1"></div>
@@ -85,17 +84,24 @@
                     {% for product_image in product_images %}
                         <div class="col s12 m4 for_cards center-align">
                             <div class="card large grey darken-1 size-image">
-                                <div class="card-image waves-effect waves-block waves-light image">
-                                    <img src='{{ product_image.image.url }}' alt="card image">
-                                </div>
+                                <a href="{% url 'product:product_details_url' id=product_image.product.id %}">
+                                    <div class="card-image image">
+
+                                        <img src='{{ product_image.image.url }}' alt="card image">
+                                        {% if product_image.product.discount %}
+                                            <div class="discount">
+                                                <span>{{ product_image.product.discount }}% </span>
+                                            </div>
+                                        {% endif %}
+                                    </div>
+                                </a>
                                 <br>
                                 <div class="card-content">
-                            <span class="card-title activator grey-text text-darken-4">{{ product_image.product.name }}<i
-                                    class="material-icons right">more_vert</i></span>
+                                    <span class="card-title activator grey-text text-darken-4">{{ product_image.product.name }}</span>
                                     <hr>
                                     <b>{{ product_image.product.price }} ₽</b>
                                     <p>
-                                        <button class="btn blue-grey lighten-2 waves-effect waves-light btn-in-card">
+                                        <button class="btn blue-grey lighten-2 btn-in-card">
                                             <a href="#" class="black-text">Добавить <i class="large material-icons">add_shopping_cart</i></a>
                                         </button>
                                     </p>
@@ -106,6 +112,9 @@
                                     <p>{{ product_image.product.name }}</p>
                                     <p>{{ product_image.product.brand }}</p>
                                     <p>{{ product_image.product.description|truncatechars_html:80 }}</p>
+                                    <div>
+                                        <a href="{% url 'product:product_details_url' id=product_image.product.id %}">Подробнее</a>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -120,7 +129,9 @@
                 <div class="row">
                     <div class="col s12 center">
                         <h3><i class="mdi-content-send brown-text"></i></h3>
-                        <h3>Свяжитесь с нами</h3>
+                        <h3>Свяжитесь с нами
+                            <i class="medium material-icons">phone</i>
+                        </h3>
                         <h5 class="left-align light">
                             Всегда поможем правильно подобрать запасные детали именно для вашего прибора.
                             Мы работаем непосредственно с производителями бытовой техники, что гарантирует отстутствие
@@ -137,7 +148,8 @@
         <div class="section no-pad-bot">
             <div class="container">
                 <div class="row center">
-                    <h3 class="header col s12 light shadow-black text-grey lighten-3">Купите уже чего-нибудь, а то не получу зачёт xD</h3>
+                    <h3 class="header col s12 light shadow-black text-grey lighten-3">Купите уже чего-нибудь, а то не
+                        получу зачёт xD</h3>
                 </div>
             </div>
         </div>
