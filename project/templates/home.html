@@ -11,14 +11,9 @@
     <div id="index-banner" class="parallax-container">
         <div class="section no-pad-bot">
             <div class="container">
-                <br><br>
-                <h1 class="header center teal-text text-lighten-2 shadow-black z-depth-5">Лучший на свете интернет
-                    магазин!</h1>
                 <div class="row center">
-                    <h3 class="header col s12 l12 shadow-black text-grey lighten-3">Оригинальные детали только у
-                        нас</h3>
-                </div>
-                <div class="center col l4">
+                    <h1 class="header teal-text text-lighten-2 shadow-black z-depth-5">Лучший интернет-магазин!</h1>
+
                     <a href="{% url 'product:product' %}" class="btn-large main-button">Перейти к запчастям</a>
                 </div>
             </div>
@@ -68,8 +63,8 @@
         <div class="section no-pad-bot">
             <div class="container">
                 <div class="row center">
-                    <h3 class="header col s12 light shadow-black text-grey lighten-3"> Найдем запчасти для Вашего
-                        прибора</h3>
+                    <h3 class="header col s12 l12 shadow-black text-grey lighten-3">Оригинальные детали только у
+                        нас</h3>
                 </div>
             </div>
         </div>
@@ -101,8 +96,9 @@
                                     <hr>
                                     <b>{{ product_image.product.price }} ₽</b>
                                     <p>
-                                        <button class="btn blue-grey lighten-2 btn-in-card">
-                                            <a href="#" class="black-text">Добавить <i class="large material-icons">add_shopping_cart</i></a>
+                                        <button class="btn blue-grey lighten-2 mg-top">
+                                            <a href="#" onclick="M.toast({html: 'Добавлено!'})" class="black-text">Добавить
+                                                <i class="large material-icons">add_shopping_cart</i></a>
                                         </button>
                                     </p>
                                 </div>
@@ -148,8 +144,8 @@
         <div class="section no-pad-bot">
             <div class="container">
                 <div class="row center">
-                    <h3 class="header col s12 light shadow-black text-grey lighten-3">Купите уже чего-нибудь, а то не
-                        получу зачёт xD</h3>
+                    <h3 class="header col s12 light shadow-black text-grey lighten-3"> Найдем запчасти для Вашего
+                        прибора!</h3>
                 </div>
             </div>
         </div>

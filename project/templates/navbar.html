@@ -3,28 +3,40 @@
         <a id="logo-container" href="/" class="brand-logo">
             <i class="material-icons">build</i>
         </a>
+
+        <a href="/" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
         <ul class="right hide-on-med-and-down">
-            <li><a href="{% url 'product:product' %}"><b >Все детали</b></a></li>
-            <li><a href="#"><b >Рандомная херня</b></a></li>
+            <li><a href="#"><i class="material-icons">search</i></a></li>
+            <li><a href={% url 'product:product' %}>Каталог</a></li>
+            <li><a href={% url 'about' %}><i class="material-icons ">more_vert</i></a></li>
             <li>
-            <a class="dropdown-trigger" href="#!" data-target="dropdown1">  <b >Профиль клиента</b>
-                <i class="material-icons right">arrow_drop_down</i></a>
-                <!-- Dropdown Trigger -->
+                <a class="dropdown-trigger" href="#!" data-target="dropdown1"> <b>Профиль клиента</b>
+                    <i class="material-icons right">arrow_drop_down</i></a>
             </li>
         </ul>
         <ul id="dropdown1" class="dropdown-content">
-            <li><a href="#!">Личный кабинет</a></li>
-            <li><a href="#!">Корзина</a></li>
-            <li class="divider"></li>
-            <li><a href="#!">Выход</a></li>
+            <li>
+                {% if user.is_authenticated %}
+                    <a href="#!">Личный кабинет {{ user.username }} </a>
+                    </li>
+                    <li><a href={% url 'basket' %}>Корзина</a></li>
+                    <li class="divider"></li>
+                    <li><a href={% url 'logout' %}>Выход</a></li>
+                {% else %}
+                    <a href={% url 'login' %}>Please login on this link</a>
+                {% endif %}
         </ul>
-        <ul id="nav-mobile" class="sidenav">
-            <li><a href="#">Личный кабинет</a></li>
-            <li><a href="#!">Корзина</a></li>
+        <ul class="sidenav" id="mobile-demo">
+            <li><a href="#!">Личный кабинет<i class="material-icons">account_box</i></a></li>
+            <li><a href={% url 'basket' %}>Корзина<i class="material-icons">add_shopping_cart</i></a></li>
+            <li><a href="#">Поиск<i class="material-icons">search</i></a></li>
+            <li><a href={% url 'product:product' %}>Каталог товаров<i class="material-icons">view_module</i></a></li>
             <li class="divider"></li>
-            <li><a href="#!">Выход</a></li>
+            <li><a href={% url 'logout' %}>Выход</a></li>
         </ul>
-        <a href="#" data-target="nav-mobile" class="sidenav-trigger"><i class="material-icons">menu</i></a>
     </div>
 </nav>
+
+
+
 

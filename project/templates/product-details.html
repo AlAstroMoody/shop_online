@@ -11,25 +11,48 @@
             <div class="col s12 center-align"><h1>{{ product.name }}</h1>
                 <hr>
             </div>
-            <div class="col s4 offset-s1">
+            <div class="col s4 offset-s2">
                 <div class="card blue-grey darken-1">
                     <div class="card-content white-text padding-bottom">
+                        Brand:
                         <span class="card-title">{{ product.brand }}
                         </span>
-                        <p>ID: {{ product.uid }}</p>
+                        ID:
+                        <p> {{ product.uid }}</p>
                         <hr>
-                        <div class="row">
-                            <div class="col s12">
-                                <div class="col s4">
-                                    <span class="card-title">{{ product.price }}₽</span></div>
-                                <div class="col s4 offset-s4">
-                                    <button class="btn waves-effect waves-light btn-in-card">
-                                        <a href="#" class="black-text">Добавить <i
-                                                class="large material-icons">add_shopping_cart</i></a>
-                                    </button>
-                                </div>
+
+
+                        <div class="quantity-block col s4">
+                            <label>Количество:
+                                <input class="quantity-num" type="number" value="1"/>
+                            </label>
+                            <label>Сумма:
+                                <input class="new-price" type="number" value="{{ product.price }}"/>
+                            </label>
+                            <input class="price" type="hidden" value="{{ product.price }}"/>
+                            <div class="row">
+                                <button>
+                                    <i class="material-icons quantity-arrow-plus">keyboard_arrow_up</i>
+                                </button>
+                                <button>
+                                    <i class="material-icons quantity-arrow-minus">keyboard_arrow_down</i>
+                                </button>
                             </div>
                         </div>
+                        <div class="col s4 offset-s3 offset-m3">
+                            <br>
+                            <br>
+                            <span class="card-title">{{ product.price }}₽</span>
+                            <button class="btn submit_btn"
+                                    data-product_id="{{ product.id }}"
+                                    data-product_price="{{ product.price }}"
+                                    data-product_name="{{ product.name }}">
+                                <a href="#" onclick="M.toast({html: 'Добавлено!'})" class="black-text">Добавить
+                                    <i class="large material-icons">add_shopping_cart</i>
+                                </a>
+                            </button>
+                        </div>
+
                     </div>
                     <div class="row">
                         <div class="col s12">
@@ -41,26 +64,30 @@
                         </div>
                         <div class="product-description">
                             <div id="detail" class="col s12"><p>{{ product.description }}</p></div>
-                            <div id="delivery" class="col s12"><p>Информация о доставке</p></div>
+                            <div id="delivery" class="col s12"><p>
+                                Доставка осуществляется каждый день с 9 до 21 часов.
+                                Заказы, принятые после 18 часов, доставляются на следующий день.
+                                Стоимость доставки в г. Красноярск 300р.
+                                При заказе товара стоимостью от 3000р - доставка бесплатна
+                            </p></div>
                             <div id="analog" class="col s12"><p>Нет их )</p></div>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="col s6 m5">
-                {% if product.discount %}
-                    <div class="col s3 offset-s3 discount-on-details center-align">Действует
-                        скидка {{ product.discount }}%
-                    </div>
-                {% endif %}
-
+            <div class="col s6 m4">
                 <div class="card">
-                    <div class="card-image">
+                    <div class="card-image materialboxed">
                         {% for image_item in product.productimage_set.all %}
                             <img src="{{ image_item.image.url }}" alt="img detail">
                         {% endfor %}
                     </div>
                 </div>
+                {% if product.discount %}
+                    <div class="col s3 offset-s3 discount center-align">Действует
+                        скидка {{ product.discount }}%
+                    </div>
+                {% endif %}
             </div>
         </div>
 

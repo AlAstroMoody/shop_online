@@ -3,13 +3,20 @@ from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import path, include
 
+from shop.views import About, RegistrationView, Logout, basket
+
 urlpatterns = [
                   path('admin/', admin.site.urls),
-                  path('', include('shop.urls')),
                   path('order/', include('order.urls')),
                   path('product/', include('product.urls')),
+                  path('about/', About.as_view(), name='about'),
+                  path('accounts/', include('django.contrib.auth.urls'), name='accounts'),
+                  path('registration/', RegistrationView.as_view(), name='registration'),
+                  path('', include('shop.urls')),
+                  path('logout/', Logout.as_view(), name='logout'),
+                  path('basket/', basket, name='basket'),
+
+
               ] \
               + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT) \
               + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
-
-

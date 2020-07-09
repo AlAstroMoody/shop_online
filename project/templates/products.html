@@ -19,8 +19,13 @@
                                     {% for image_item in product.productimage_set.all %}
                                         <img src="{{ image_item.image.url }}" alt="img detail">
                                     {% endfor %}
+                                    {% if product.discount %}
+                                        <div class="col s12 discount center-align">Действует
+                                            скидка {{ product.discount }}%
+                                        </div>
+                                    {% endif %}
                                 </div>
-                                <div class="card-content activator">
+                                <div class="card-content activator ">
                                     <p>{{ product.name| truncatechars:25 }} <i
                                             class="material-icons right">more_vert</i></p>
                                 </div>
