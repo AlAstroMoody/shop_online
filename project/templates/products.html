@@ -13,25 +13,31 @@
                 <div class="row">
 
                     {% for product in products %}
-                        <div class="col s10 offset-s2 m3 for_cards center-align">
+                        <div class="col s10 offset-s1 m4 for_cards center-align">
                             <div class="card product-card">
                                 <div class="card-image product-image image">
                                     {% for image_item in product.productimage_set.all %}
                                         <img src="{{ image_item.image.url }}" alt="img detail">
                                     {% endfor %}
-                                    {% if product.discount %}
-                                        <div class="col s12 discount center-align">Действует
-                                            скидка {{ product.discount }}%
-                                        </div>
-                                    {% endif %}
                                 </div>
                                 <div class="card-content activator ">
                                     <p>{{ product.name| truncatechars:25 }} <i
                                             class="material-icons right">more_vert</i></p>
                                 </div>
+
                                 <div class="card-action">
                                     {{ product.price }} ₽
                                 </div>
+                                {% if product.discount %}
+                                    <div class="col s12 discount center-align">
+                                        Действует скидка {{ product.discount }}%
+                                    </div>
+
+                            {% else %}
+                                    <div class="col s12 no_discount center-align">
+                                        Хит продаж
+                                    </div>
+                            {% endif %}
                                 <div class="card-reveal">
                         <span class="card-title grey-text text-darken-4">{{ product_image.product.name }}<i
                                 class="material-icons right">close</i></span>

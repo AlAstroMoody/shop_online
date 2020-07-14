@@ -80,9 +80,14 @@ footer.page-footer {
 }
 
 .discount {
-    position: absolute;
-    top: 7%;
     background: #00E676;
+    width: 100%;
+    color: white;
+    font-weight: 700;
+    padding: 3px;
+}
+.no_discount {
+    background: #126bcd;
     width: 50%;
     color: white;
     font-weight: 500;

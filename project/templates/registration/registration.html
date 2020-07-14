@@ -7,27 +7,30 @@
 
 {% block content %}
 
-    <div>
-        <div class="grey darken-1 empty-layout">
-            <div class="card auth-card">
-                <div class="card-content">
-                    <span class="card-title">Регистрация</span>
-                    <form action="" method="post">
-                        {% csrf_token %}
-                        {{ form.as_p }}
-                        <input type="submit" class="btn waves-effect waves-light auth-submit" value="Зарегистрировать ">
-
-                    </form>
-                </div>
-                <div class="card-action">
-                    <p class="center">
-                        Уже есть аккаунт?
-                        <a href={% url 'login' %}>Войти!</a>
-                    </p>
+    <div class="grey darken-1 empty-layout">
+        <div class="container">
+            <div class="row">
+                <div class="card auth-card col offset-l4 s8 m6 l4 offset-s2">
+                    <div class="card-content">
+                        <span class="card-title">Регистрация</span>
+                        <form action="" method="post">
+                            {% csrf_token %}
+                            {{ form.as_p }}
+                            <input type="submit" class="btn waves-effect waves-light auth-submit"
+                                   value="Сохранить ">
+                        </form>
+                    </div>
+                    <div class="card-action">
+                        <p class="center">
+                            Уже есть аккаунт?
+                            <a href={% url 'login' %}>Войти!</a>
+                        </p>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
+
 
 {% endblock %}
 

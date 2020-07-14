@@ -1,10 +1,10 @@
 <nav class="grey darken-3" role="navigation">
     <div class="nav-wrapper container">
-        <a id="logo-container" href="/" class="brand-logo">
+        <a id="logo-container" class="brand-logo" href={% url 'home:home' %}>
             <i class="material-icons">build</i>
         </a>
 
-        <a href="/" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+        <a data-target="mobile-demo" class="sidenav-trigger" href={% url 'home:home' %}><i class="material-icons">menu</i></a>
         <ul class="right hide-on-med-and-down">
             <li><a href="#"><i class="material-icons">search</i></a></li>
             <li><a href={% url 'product:product' %}>Каталог</a></li>
@@ -19,7 +19,13 @@
                 {% if user.is_authenticated %}
                     <a href="#!">Личный кабинет {{ user.username }} </a>
                     </li>
-                    <li><a href={% url 'basket' %}>Корзина</a></li>
+                    <li><a href={% url 'order:basket' %}>Корзина <span id="total_quantity">
+                        {% if total_quantity %}
+                            {{ total_quantity }}
+                        {% else %}
+                            (0)
+                        {% endif %}
+                    </span></a></li>
                     <li class="divider"></li>
                     <li><a href={% url 'logout' %}>Выход</a></li>
                 {% else %}
@@ -27,8 +33,9 @@
                 {% endif %}
         </ul>
         <ul class="sidenav" id="mobile-demo">
+            <li> {{ user.username }}</li>
             <li><a href="#!">Личный кабинет<i class="material-icons">account_box</i></a></li>
-            <li><a href={% url 'basket' %}>Корзина<i class="material-icons">add_shopping_cart</i></a></li>
+            <li><a href={% url 'order:basket' %}>Корзина<i class="material-icons">add_shopping_cart</i></a></li>
             <li><a href="#">Поиск<i class="material-icons">search</i></a></li>
             <li><a href={% url 'product:product' %}>Каталог товаров<i class="material-icons">view_module</i></a></li>
             <li class="divider"></li>
@@ -36,7 +43,6 @@
         </ul>
     </div>
 </nav>
-
 
 
 

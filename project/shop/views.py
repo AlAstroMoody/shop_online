@@ -1,8 +1,7 @@
-from django.contrib.auth.decorators import login_required
-from django.contrib.auth.forms import UserCreationForm
-from django.shortcuts import render, redirect
-from django.views.generic import View, FormView
 from django.contrib.auth import logout
+from django.contrib.auth.forms import UserCreationForm
+from django.shortcuts import render
+from django.views.generic import View, FormView
 
 from product.models import ProductImage
 
@@ -10,6 +9,7 @@ from product.models import ProductImage
 class Home(View):
     def get(self, request):
         product_images = ProductImage.objects.filter(is_active=True, is_main_image=True)[:3]
+        session_key = request.session.session_key
         return render(request, 'home.html', locals())
 
 
@@ -37,9 +37,3 @@ class RegistrationView(FormView):
 
     def form_invalid(self, form):
         return super(RegistrationView, self).form_invalid(form)
-
-
-@login_required
-def basket(request):
-    return render(request, 'basket.html', locals())
-
