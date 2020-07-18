@@ -1,15 +1,13 @@
+from django.contrib.auth.models import User
 from django.db import models
 from django.db.models.signals import post_save
 
 from product.models import Product
-from django.dispatch import receiver
 
 
 class Status(models.Model):
     name = models.CharField(max_length=20)
     is_active = models.BooleanField(default=True)
-    created = models.DateTimeField(auto_now_add=True, auto_now=False)
-    updated = models.DateTimeField(auto_now_add=False, auto_now=True)
 
     class Meta:
         verbose_name = 'Статус заказа'
@@ -22,12 +20,11 @@ class Status(models.Model):
 class Order(models.Model):
     created = models.DateTimeField(auto_now_add=True, auto_now=False)
     updated = models.DateTimeField(auto_now_add=False, auto_now=True)
-    customer_name = models.CharField(max_length=50, blank=True, null=True, default=None)
-    customer_email = models.EmailField(blank=True, null=True, default=None)
-    customer_phone = models.CharField(max_length=12, blank=True, null=True, default=None)
     comments = models.TextField(max_length=1000, blank=True, null=True, default=None)
     status = models.ForeignKey(Status, on_delete=models.CASCADE)
     total_price = models.DecimalField(max_digits=10, decimal_places=2, default=0)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    is_active = models.BooleanField(default=True)
 
     def __str__(self):
         return f'Заказ {self.id} {self.status.name}'
@@ -78,7 +75,6 @@ post_save.connect(product_in_order_post_save, ProductInOrder)
 
 
 class ProductInBasket(models.Model):
-    session_key = models.CharField(max_length=128, blank=True, null=True, default=None)
     order = models.ForeignKey(Order, on_delete=models.CASCADE)
     product = models.ForeignKey(Product, on_delete=models.CASCADE)
     quantity = models.IntegerField(default=1)

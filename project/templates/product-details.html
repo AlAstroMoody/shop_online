@@ -65,7 +65,12 @@
                                             data-product_id="{{ product.id }}"
                                             data-product_price="{{ product.price }}"
                                             data-product_name="{{ product.name }}"
-                                            onclick="M.toast({html: 'Добавлено!'})">Добавить
+                                            {% if is_anonymous %}
+                                            onclick="M.toast({html: 'Требуется авторизация'})">Добавить
+                                                {% else %}
+                                                onclick="M.toast({html: 'Добавлено!'})">Добавить
+                                            {% endif %}
+
                                         <i class="large material-icons">add_shopping_cart</i>
                                     </button>
                                 </div>

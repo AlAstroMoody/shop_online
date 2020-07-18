@@ -12,7 +12,7 @@
         <div class="section no-pad-bot">
             <div class="container">
                 <div class="row center">
-                    <h1 class="header teal-text text-lighten-2 shadow-black z-depth-5">Лучший интернет-магазин!</h1>
+                    <h1 class="header teal-text text-lighten-2 shadow-black ">Лучший интернет-магазин!</h1>
                     <a href="{% url 'product:product' %}" class="btn-large main-button">К товарам</a>
                 </div>
             </div>
@@ -94,12 +94,6 @@
                                     <span class="card-title activator grey-text text-darken-4">{{ product_image.product.name }}</span>
                                     <hr>
                                     <b>{{ product_image.product.price }} ₽</b>
-                                    <p>
-                                        <button class="btn blue-grey lighten-2 mg-top">
-                                            <a href="#" onclick="M.toast({html: 'Добавлено!'})" class="black-text">Добавить
-                                                <i class="large material-icons">add_shopping_cart</i></a>
-                                        </button>
-                                    </p>
                                 </div>
                                 <div class="card-reveal">
                         <span class="card-title grey-text text-darken-4">{{ product_image.product.name }}<i
