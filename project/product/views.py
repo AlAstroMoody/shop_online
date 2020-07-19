@@ -1,18 +1,14 @@
 from django.shortcuts import render, get_object_or_404
-from django.views.generic import View
+from django.views.generic import View, DetailView, ListView
 
 from product.models import Product
 
 
-class ProductsView(View):
-    def get(self, request):
-        products = Product.objects.all().order_by('-id')
-        return render(request, './products.html', locals())
+class ProductsView(ListView):
+    queryset = Product.objects.all().order_by('-id')
 
 
-class ProductDetails(View):
+class ProductDetail(DetailView):
+    queryset = Product.objects.all()
+    pk_url_kwarg = 'id'
 
-    def get(self, request, id):
-        product = get_object_or_404(Product, id__iexact=id)
-        return render(request, 'product-details.html',
-                      locals())

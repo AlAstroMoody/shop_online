@@ -1,4 +1,4 @@
-{% extends './base.html' %}
+{% extends '../base.html' %}
 {% load static %}
 
 {% block title %}
@@ -12,7 +12,7 @@
                 <h2 class="text-accent-3 center-align">Все товары</h2>
                 <div class="row">
 
-                    {% for product in products %}
+                    {% for product in object_list %}
                         <div class="col s10 offset-s1 m3 for_cards center-align">
                             <div class="card product-card">
                                 <div class="card-image product-image image">
